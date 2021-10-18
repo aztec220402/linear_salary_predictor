@@ -1,15 +1,26 @@
 {% extends 'base.html' %}
 {% block head %} <title>Salary Predictor</title> {% endblock %}
-{% block body %} 
+{% block body %}
+
+    <h1>Salary Predictor</h1>
     <div class="main">
-        <h1>Salary Predictor</h1>
 
         <form action="/" method="post">
             <label for="yoe">Years of Experience:</label>
             <br>
-            <input type="text" id="yoe" name="yoe" value="">
+            <input autocomplete="off" autofocus type="text" id="yoe" name="yoe" value="">
             <br>
             <input id="btn" type="submit" value="Predict">
         </form>
+    </div>
+
+    <div class="result">
+        {% if result == "MAA CHUDA" %}
+        <h2 class="error" >{{result}}!</h2>
+        {% elif result %}
+        <h2>
+            Your predicted salary is <span>₹</span><span style="text-decoration: underline;">{{result}}</span>. 
+        </h2>
+        {% endif %}
     </div>
 {% endblock %}
