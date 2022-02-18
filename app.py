@@ -9,7 +9,7 @@ def index():
     if request.method == "POST":
         LR = joblib.load("LR1.pkl")
         if request.form["yoe"] == "":
-            return render_template("index.html", result="MAA CHUDA")
+            return render_template("index.html", result="Please Retry!")
         y_pred = LR.predict(np.array(int(request.form['yoe'])).reshape(-1, 1))
         y_pred = round(y_pred[0], 2)
         return render_template("index.html", result=y_pred)
